@@ -112,7 +112,11 @@ def main():
         d.ellipse([cx + ex, cy + ey, cx + ex + ew, cy + ey + eh], fill=LAND)
     crack = [(cx - 58, cy - 74), (cx - 18, cy - 32), (cx - 44, cy + 2),
              (cx + 6, cy + 34), (cx - 8, cy + 72)]
+    # white halo first so the crack reads as a cut through the globe,
+    # then the red stroke on top; a thin navy rim defines the disc
+    d.line(crack, fill=(255, 255, 255), width=11, joint="curve")
     d.line(crack, fill=RED, width=6, joint="curve")
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=NAVY, width=2)
 
     # ---------- 2x2 grid ----------
     gy = 470
